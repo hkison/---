@@ -171,11 +171,12 @@ import time
 input("마음의 준비하시고 누르세요[Enter]")
 
 t = time.time()
-input("5초안에 아무 키나 누르세요[Enter]")
-print(time.time() - t)
-if 4.5 <= time.time() - t or time.time() - t <= 5.5:
+input("4.5초~ 5.5초 사이에 아무 키나 누르세요[Enter]")
+user = round(time.time() - t,2)
+print(user)
+if user >= 4.5 and user <= 5.5: # and!! or아님!!
     print("Clear!")
-if time.time() - t > 5.5 or time.time() - t < 4.5:
+else:
     print("Fail!")
 
 #-----------------------------------------------------------------------------------------------------

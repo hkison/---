@@ -354,7 +354,7 @@
 # 1234567891011121314151617181920 -> 31
 
 N = int(input("수 입력 : "))
-strN=""
+strN = ""
 for i in range(1,N+1):
     strN += str(i)
 print(strN,"길이는",len(strN))

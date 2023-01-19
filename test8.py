@@ -1,59 +1,59 @@
 # 반복문 탈출 break
 
 # ----------------------------------------------------------------------------------------------------
-for i in range(10):
-    if i == 5:
-        break
-    print(i)
+# for i in range(10):
+#     if i == 5:
+#         break
+#     print(i)
 # 0 1 2 3 4
 
-for i in range(10):
-    print(i)
-    if i == 5:
-        break
+# for i in range(10):
+#     print(i)
+#     if i == 5:
+#         break
 # 0 1 2 3 4 5
 
 # break는 반복문 안에서만 쓸수있음!
 
 # ----------------------------------------------------------------------------------------------------
-for i in [1,2,3]:
-    for j in [4,5,6]:
-        if j == 5:
-            break
-        print(i,j)
-    print("!")
+# for i in [1,2,3]:
+#     for j in [4,5,6]:
+#         if j == 5:
+#             break
+#         print(i,j)
+#     print("!")
 
 # break는 제일 가까운 loop 하나만 빠져나간다!
 
 # ----------------------------------------------------------------------------------------------------
-for i in range(10):
-    if i > 5:
-        break
-else:
-    print(i,"5보다 작음")
+# for i in range(10):
+#     if i > 5:
+#         break
+# else:
+#     print(i,"5보다 작음")
 
 # for ~ else 구문
 # 반복이 완전하게 돌았다 -> else 종속문장 실행됨
 # 반복이 중간에 끊겼다 (break) -> else 종속문장 실행안됨
 
 # ----------------------------------------------------------------------------------------------------
-N = int(input())
+# N = int(input())
 
-for i in range(2,N):
-    if N % i == 0:
-        break
-else:
-    print(N, "은 0000000 입니다.")
+# for i in range(2,N):
+#     if N % i == 0:
+#         break
+# else:
+#     print(N, "은 0000000 입니다.")
 # 0000000 -> 소수입니다
 
 # i는 1을 제외한 N-1 까지의 숫자가 들어가므로 만약 break가 걸리지않는다면 N의 약수가 1과 N만 남기 때문에 N이 소수인걸 증명할 수 있다.
 
 # ----------------------------------------------------------------------------------------------------
 # continue
-for i in range(10):
-    if i < 5:
-        continue
-    print(i)
+# for i in range(10):
+#     if i < 5:
+#         continue
+#     print(i)
 # 5 6 7 8 9
 # continue는 조건이 성립할 시 다음으로 넘어가란 뜻 -> i가 5가 될 때부터 continue가 실행되지않으므로 5 6 7 8 9가 실행됨
 # continue와 break는 프로그램의 속도에 영향을 미친다. -> 잘 사용하면 프로그램의 속도가 빨라짐(불필요한 코드를 실행하지 않기 때문)
@@ -64,68 +64,68 @@ for i in range(10):
 # while(반복 횟수 명확x)
 # while Bool:
 # Bool 값이 True일 동안 종속문장을 반복한다.
-for i in range(1,11):
-    print(i)
-print("="*30)
-i = 1
-while i < 11:
-    print(i)
-    i += 1
-print("="*30)
-i = 0
-while i < 10:
-    i += 1
-    print(i)
+# for i in range(1,11):
+#     print(i)
+# print("="*30)
+# i = 1
+# while i < 11:
+#     print(i)
+#     i += 1
+# print("="*30)
+# i = 0
+# while i < 10:
+#     i += 1
+#     print(i)
 # 세 반복문 모두 같은 결과를 도출한다. 1 ~ 10 -> 종속문장의 실행순서를 잘 보도록 하자
 
 # ----------------------------------------------------------------------------------------------------
 # N 단 입력받고 구구단 출력하기!
-N = int(input("N 단 입력: "))
+# N = int(input("N 단 입력: "))
 
-i = 1
-while i < 10:
-    print (N,"x",i,"=",N*i)
-    i += 1
+# i = 1
+# while i < 10:
+#     print (N,"x",i,"=",N*i)
+#     i += 1
 
 # ----------------------------------------------------------------------------------------------------
 # while True:
 # stop 이라고 입력할 때까지 입력받기
 
-while True:
-    N = input("입력(종료 : stop): ")
-#   ...
-    if N == "stop":
-        print("프로그램 종료")
-        break
+# while True:
+#     N = input("입력(종료 : stop): ")
+# #   ...
+#     if N == "stop":
+#         print("프로그램 종료")
+#         break
 
 # ----------------------------------------------------------------------------------------------------
 # 특정키(0)를 입력할 때까지 반복되도록 프로그램하세요.
 
-while True:
-    N = int(input("숫자 입력(0 은 종료) : "))
-    if N == 0:
-        print("프로그램 종료")
-        break
+# while True:
+#     N = int(input("숫자 입력(0 은 종료) : "))
+#     if N == 0:
+#         print("프로그램 종료")
+#         break
 
 # ----------------------------------------------------------------------------------------------------
 # 특정키(0)를 입력할 때까지 수들의 합 구하는 프로그램
-su = 0
-while True:
-    N = int(input("수 입력(0은 종료): "))
-    su += N
-    if N == 0:
-        print(su)
-        break
+# su = 0
+# while True:
+#     N = int(input("수 입력(0은 종료): "))
+#     su += N
+#     if N == 0:
+#         print(su)
+#         break
     
 # ----------------------------------------------------------------------------------------------------
 # 특정키(0)를 입력할 때까지의 수들의 평균을 구하는 프로그램
-li = []
-while True:
-    N = int(input("수 입력(0은 종료) : "))
-    li.append(N)
-    if N == 0:
-        print(sum(li)/(len(li)-1))
-        break
+# li = []
+# while True:
+#     N = int(input("수 입력(0은 종료) : "))
+#     li.append(N)
+#     if N == 0:
+#         print(sum(li)/(len(li)-1))
+#         break
 # -1 보다 li.append(N)의 위치를 바꿔주는게 더 좋은 코딩!
 
 # ----------------------------------------------------------------------------------------------------
@@ -138,22 +138,22 @@ while True:
 #  2-2) 아닐경우
 #    - 숫자입력유도
 
-li = []
+# li = []
 
-while True:
-    N = input("입력 (종료quit) : ")
+# while True:
+#     N = input("입력 (종료quit) : ")
 
-    if N.isnumeric(): # 1
-        li.append(int(N))
-    else: # 2
-        if N == "quit": # 2-1
-            if li: #li가 비어있지 않다면
-                print("평균 >", sum(li)/len(li))
-                break
-            else: #li가 비어있다면
-                print("입력된 수 없음!")
-        else: # 2-2
-            print("수를 입력해주세요 !!")
+#     if N.isnumeric(): # 1
+#         li.append(int(N))
+#     else: # 2
+#         if N == "quit": # 2-1
+#             if li: #li가 비어있지 않다면
+#                 print("평균 >", sum(li)/len(li))
+#                 break
+#             else: #li가 비어있다면
+#                 print("입력된 수 없음!")
+#         else: # 2-2
+#             print("수를 입력해주세요 !!")
 
 # 요구명세서를 습관적으로 작성하자!
 
@@ -172,23 +172,23 @@ while True:
 # 2-1-1) 평균 출력 후 종료 시켜준다
 # 2-1-2) 입력된 점수가 없다고 말해주고 종료 시켜준다
 # 2-2) 숫자를 입력하라고 안내해준다
-liN=[]
-while True:
-    N = input("숫자 입력 :")
-    if N.isnumeric():
-        if 100 >= int(N) >= 0:
-            liN.append(int(N))
-        else:
-            print("0에서 100 사이의 점수를 입력하세요!")
-    else:
-        if N =="quit":
-            if liN:
-                print("평균: ",sum(liN)/len(liN))    
-            else:
-                print("입력된 점수가 없습니다!")
-            break
-        else:
-            print("숫자를 입력하세요!")
+# liN=[]
+# while True:
+#     N = input("숫자 입력 :")
+#     if N.isnumeric():
+#         if 100 >= int(N) >= 0:
+#             liN.append(int(N))
+#         else:
+#             print("0에서 100 사이의 점수를 입력하세요!")
+#     else:
+#         if N =="quit":
+#             if liN:
+#                 print("평균: ",sum(liN)/len(liN))    
+#             else:
+#                 print("입력된 점수가 없습니다!")
+#             break
+#         else:
+#             print("숫자를 입력하세요!")
 
 # ----------------------------------------------------------------------------------------------------
 # 자판기 프로그램
@@ -262,4 +262,3 @@ while True:
     os.system("cls")
     
 # ----------------------------------------------------------------------------------------------------
-

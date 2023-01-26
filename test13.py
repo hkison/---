@@ -286,8 +286,9 @@
 
 # ----------------------------------------------------------------------------------------------------
 # 나만의 단어장 만들기 프로그램
+import os
 
-di={}
+di={"apple":'사과'}
 
 while True:
     print("="*15)
@@ -298,20 +299,47 @@ while True:
     print("5.종료")
     print("="*15)
 
-    user = int(input("메뉴입력 > "))
-    if user == 1:
+    user = input("메뉴입력 > ")
+    if user == '1':
         sch = input("검색할 단어를 입력해주세요 : ")
         if sch in di:
             print(sch,"의 뜻은",di[sch],"입니다")
         else:
             print("등록된 단어가 아닙니다")
-    elif user == 2:
+    elif user == '2':
         word = input("추가할 단어를 입력해주세요 : ")
-        print(word,end =" ")
-        mean = input("의 뜻을 입력해주세요 : ")
-        mean = di[word]
-        print(di[word])
-
+        if word in di:
+            print("이미 등록된 단어입니다")
+        else :
+            print(word,end =" ")
+            mean = input("의 뜻을 입력해주세요 : ")
+            di[word] = mean
+    elif user == '3':
+        edit = input("수정할 단어를 입력해주세요 : ")
+        if edit not in di:
+            print("등록된 단어가 아닙니다")
+        else:
+            print(edit,end=' ')
+            emean = input("의 뜻을 입력해주세요 : ")
+            if emean == di[edit]:
+                print("이미",emean,"이라고 저장되어 있습니다")
+            else:
+                di[edit] = emean
+                print("단어의 뜻이 수정되었습니다")
+    elif user == '4':
+        delete = input("삭제할 단어를 입력해주세요 : ")
+        if delete in di:
+            del di[delete]
+            print(delete,"가 사전에서 삭제됩니다")
+        else:
+            print("등록된 단어가 아닙니다")
+    elif user == '5':
+        print("빠잇")
+        break
+    else:
+        print("메뉴 정확하게 입력하기!")
+    input("계속하시려면 아무 키나 누르십시오(종료아님! 창 깨끗하게 만드는거임!)")
+    os.system('cls')
 
 
 # ----------------------------------------------------------------------------------------------------

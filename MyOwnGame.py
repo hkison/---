@@ -62,7 +62,7 @@ def coinBuyLogic(a,b,c): # a = seed b = coinValue c=seedlist
                 time.sleep(2)
             elif (coinAmount).isnumeric():
                 print(coinAmount,"개 매수 완료.")
-                a += int(coinAmount)
+                a += int(coinAmount) + sum(c)
                 c.clear()
                 c.append(a)
                 seedMoney -= int(coinAmount) * b
@@ -92,7 +92,7 @@ def coinSellLogic(a,b,c): # a = seed b = coinValue c=seedlist
             a = aS
             del c[0]
             c.append(a)
-            seedMoney -= int(coinAmount) * b
+            seedMoney += int(coinAmount) * b
             print("{:,}".format(int(coinAmount) * b ))
             print("현재 보유 금액 : ""{:,}".format(seedMoney))
             time.sleep(2)
@@ -102,6 +102,10 @@ def coinSellLogic(a,b,c): # a = seed b = coinValue c=seedlist
     except:
         print("에러 ! 유효하지 않은 메뉴나 값입니다")
         time.sleep(1.5)
+
+
+def coinR(a,b,c):
+    a = random.randint(b,c)
 
 while True:
     # time.sleep(0.1)
@@ -161,11 +165,6 @@ while True:
         print("번호를 맞게 입력하여 주십시오.")
         time.sleep(2)
 
-    CPer =  random.randint(-90,90)
-    PyPer =  random.randint(-50,50)
-    JPer =  random.randint(-90,90)
-    CpPer =  random.randint(-50,50)
-    CsPer = random.randint(-20,20)
 
     C += int(C*CPer/100)
     Py += int(Py*PyPer/100)

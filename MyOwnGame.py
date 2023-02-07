@@ -45,12 +45,6 @@ sell = 2
 
 upDownPer = 50
 
-upDownCntC = 0
-upDownCntPy = 0
-upDownCntJ = 0
-upDownCntCp = 0
-upDownCntCs = 0
-
 def coinBuyLogic(a,b,c): # a = seed b = coinValue c=seedlist
         global coinAmount
         global seedMoney
@@ -97,15 +91,25 @@ def coinSellLogic(a,b,c): # a = seed b = coinValue c=seedlist
             print("현재 보유 금액 : ""{:,}".format(seedMoney))
             time.sleep(2)
         else:
-            print("숫자를 입력해주세요.")
+            print("0보다 큰 숫자를 입력해주세요.")
             time.sleep(1)
     except:
         print("에러 ! 유효하지 않은 메뉴나 값입니다")
         time.sleep(1.5)
 
 
-def coinR(a,b,c):
-    a = random.randint(b,c)
+def coinR(coin,coinPer,b=-20,c=20):   
+    global upDownPer
+    if coinPer < 0:
+        coinPer = random.randint(b/2,c)
+        upDownPer = 66.6
+    elif coinPer > 0:
+        coinPer = random.randint(b,c/2)
+        upDownPer = 33.3
+    else:
+        coinPer = random.randint(b,c)
+        upDownPer = 50
+    coin += int(coin*coinPer/100)
 
 while True:
     # time.sleep(0.1)
@@ -125,20 +129,26 @@ while True:
     print("매수 : 1번\t\t 현재금액 : ",end ="")
     print("{:,}".format(seedMoney))
     print("매도 : 2번")
+    print("게임 설명 : 3번")
 
     user = input("메뉴를 선택하세요 : ")
     if user == '1':
         coinKind = input("매수 종목 선택 : ")
         if coinKind == '1':
             coinBuyLogic(seedC,C,seedlistC)
+            coinR(C,CPer)
         elif coinKind == '2':
             coinBuyLogic(seedPy,Py,seedlistPy)
+            coinR(Py,PyPer)
         elif coinKind == '3':
             coinBuyLogic(seedJ,J,seedlistJ)
+            coinR(J,JPer)
         elif coinKind == '4':
             coinBuyLogic(seedCp,Cp,seedlistCp)
+            coinR(Cp,CpPer)
         elif coinKind == '5':
             coinBuyLogic(seedCs,Cs,seedlistCs)
+            coinR(Cs,CsPer)
         else:
             print("번호를 입력하여 주십시오.")
             time.sleep(2)
@@ -150,27 +160,37 @@ while True:
             coinMenu = input("매도 종목 선택 : ")
             if coinMenu == '1':
                 coinSellLogic(seedC,C,seedlistC)
+                coinR(C,CPer)
             elif coinMenu == '2':
                 coinSellLogic(seedPy,Py,seedlistPy)
+                coinR(Py,PyPer)
             elif coinMenu == '3':
                 coinSellLogic(seedJ,J,seedlistJ)
+                coinR(J,JPer)
             elif coinMenu == '4':
                 coinSellLogic(seedCp,Cp,seedlistCp)
+                coinR(Cp,CpPer)
             elif coinMenu == '5':
                 coinSellLogic(seedCs,Cs,seedlistCs)
+                coinR(Cs,CsPer)
             else:
                 print("번호를 입력하여 주십시오.")
                 time.sleep(2)
+    elif user == '3':
+        print("1.순수 보유금액 1억 달성시 [게임 승리] 입니다")
+        print("2.시작 금액은 100만원으로 시작합니다.")
+        print("3.코인의 등락확률은 높을수록 상승할 확률이 높고\n낮을수록 하락할 확률이 높습니다")
+        print("4.승리 목표에 보유중인 코인의 가치는 합산되지 않습니다.")
+        print("5.해당 코인이 이전에 상승했다면 그다음에 코인이 상승할 확률은 낮아집니다.")
+        print("6.해당 코인이 이전에 하락했다면 그다음에 코인이 하락할 확률은 낮아집니다.")
+        print("7.기타 오류 및 에러 발생 시 모든 데이터가 초기화되므로 양해바랍니다.")
+        print("Tip : 매수나 매도를 0개로 설정하더라도 코인의 등락이 이루어집니다! 잘 이용해 보세요!")
+        print("8.1억까지 화이팅![게임으로 돌아가려면 아무 키나 누르십시오]")
+        input()
+
     else:
         print("번호를 맞게 입력하여 주십시오.")
         time.sleep(2)
-
-
-    C += int(C*CPer/100)
-    Py += int(Py*PyPer/100)
-    J += int(J*JPer/100)
-    Cp += int(Cp*CPer/100)
-    Cs += int(Cs*CsPer/100)
 
     
     

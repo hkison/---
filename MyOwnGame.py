@@ -49,23 +49,20 @@ def coinBuyLogic(a,b,c): # a = seed b = coinValue c=seedlist
         global coinAmount
         global seedMoney
         print("현재 최대 가능 매수 : ", seedMoney // b)
-        coinAmount = input("얼마나 매수하시겠습니까? : ")
+        coinAmount = int(input("얼마나 매수하시겠습니까? : "))
         try :
-            if int(coinAmount) > seedMoney // b :
+            if coinAmount > seedMoney // b :
                 print("보유하신 금액이 부족합니다")
                 time.sleep(2)
-            elif (coinAmount).isnumeric():
+            else:
                 print(coinAmount,"개 매수 완료.")
-                a += int(coinAmount) + sum(c)
+                a += coinAmount + sum(c)
                 c.clear()
                 c.append(a)
-                seedMoney -= int(coinAmount) * b
-                print("{:,}".format(int(coinAmount) * b * -1))
+                seedMoney -= coinAmount * b
+                print("{:,}".format(coinAmount * b * -1))
                 print("현재 보유 금액 : ""{:,}".format(seedMoney))
                 time.sleep(2)
-            else:
-                print("숫자를 입력해주세요.")
-                time.sleep(1)
         except:
             print("에러 ! 유효하지 않은 메뉴나 값입니다")
             time.sleep(1.5)
@@ -74,7 +71,7 @@ def coinSellLogic(a,b,c): # a = seed b = coinValue c=seedlist
     global coinAmount
     global seedMoney
     print("현재 최대 가능 매도 : ", c)
-    coinAmount = input("얼마나 매도하시겠습니까? : ")
+    coinAmount = int(input("얼마나 매도하시겠습니까? : "))
     try :
         if sum(c) < int(coinAmount) :
             print("보유하신 코인이 부족합니다")
@@ -110,6 +107,7 @@ def coinR(coin,coinPer,b=-20,c=20):
         coinPer = random.randint(b,c)
         upDownPer = 50
     coin += int(coin*coinPer/100)
+    return coin,coinPer
 
 while True:
     # time.sleep(0.1)
